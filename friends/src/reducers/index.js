@@ -1,10 +1,11 @@
-import { FETCHING_FRIENDS, FETCHING_FRIENDS_SUCCESS, FETCHING_FRIENDS_FAILURE } from "../actions";
+import { FETCHING_FRIENDS, FETCHING_FRIENDS_SUCCESS, FETCHING_FRIENDS_FAILURE, LOGIN_START, LOGIN_SUCCESS } from "../actions";
 
 
 const initialStateBanana = {
     friends: [],
     isFetching: false,
-    err: ''
+    err: '',
+    isLoggingIn: false
 }
 
 
@@ -36,6 +37,17 @@ const reducers = (stateApple = initialStateBanana, action) => {
                 isFetching: false,
                 err: action.payload
             
+            }
+
+            case LOGIN_START:
+            return {
+                ...stateApple,
+                isLoggingIn: true
+            }
+        case LOGIN_SUCCESS:
+            return {
+                ...stateApple,
+                isLoggingIn: false
             }
     
 

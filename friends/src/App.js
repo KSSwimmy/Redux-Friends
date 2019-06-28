@@ -1,14 +1,20 @@
 import React from 'react';
-import FriendsListView from './components/FriendsListView'
-
 import './App.css';
+import FriendsListView from './components/FriendsListView'
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+import Login from './components/Login'
+import PrivateRoute from './components/PrivateRoute'
 
 function App() {
   return (
-    <div className="App">
-     <h2>Friends List</h2>
-     <FriendsListView />
-    </div>
+    <Router>
+      <div className="App">
+        <h2>Friends List</h2>
+        <Link to='/api/login'>Log In Here</Link>
+        <Route path='/api/login' component={Login} />
+        <PrivateRoute exact path='/api/friends' component={FriendsListView} />
+      </div>
+    </Router>
   );
 }
 

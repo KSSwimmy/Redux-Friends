@@ -1,12 +1,27 @@
 import React, { Component } from 'react'
-import FriendsList from './friendsList'
+import Friends from './Friends'
+import { connect } from 'react-redux'
+import { getFriends } from '../actions';
+ 
+ class FriendsList extends Component {
 
-export default class FriendsListView extends Component {
+    componentDidMount(){
+        this.props.getFriends()
+    }
+
     render() {
+        console.log(this.props.friends)
         return (
             <div>
-                <FriendsList />
+                <Friends />
             </div>
         )
     }
 }
+
+const mapStateToProps = stateApple => ({
+    isFetching: stateApple.isFetching,
+    friends: stateApple.friends
+})
+
+export default connect(mapStateToProps, {getFriends}) (FriendsList)

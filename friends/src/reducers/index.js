@@ -13,13 +13,20 @@ const reducers = (stateApple = initialStateBanana, action) => {
     switch (action.type) {
 
         case FETCHING_FRIENDS: 
-            return {...stateApple, isFetching: true } 
+            return {
+                ...stateApple, 
+                isFetching: true 
+            } 
 
         case FETCHING_FRIENDS_SUCCESS:
             return {
                 ...stateApple, 
                 isFetching: false,
-                friends: [...stateApple.friends, ...action.payload ]
+
+                friends: [
+                    ...stateApple.friends, 
+                    ...action.payload 
+                ]
 
             }
 
